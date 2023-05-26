@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan 1 JSON</title>
+</head>
+<body>
+    
+    <h3>Format Form</h3>
+    NIM : <input type="text" id="txNIM"><br>
+    NAMA : <input type="text" id="txNAMA"><br>
+    Jenis kelamin : <input type="text" id="txJKEL"><br>
+    TAGGAL LAHIR : <input type="text" id="txTGL"><br>
+    HOBY : <input type="text" id="txHOBY"><br>
+    ALAMAT : <input type="text" id="txALAMAT"><br>
+
+    <h3>Format Form</h3>
+    NIM : <span id="txNIM2"></span><br>
+    NAMA : <span id="txNAMA2"></span><br>
+    jenis kelamin : <span id="txJKEL2"></span><br>
+    TAGGAL LAHIR : <span id="txTGL2"></span><br>
+    HOBY : <span id="txHOBY2"></span><br>
+    ALAMAT : <span id="txALAMAT2"></span><br>
+
+
+    <script>
+        const bacadata = new XMLHttpRequest();
+        bacadata.open("GET","http://localhost/pertemuan11/latihan01.php");
+        bacadata.send();
+        bacadata.onload = function(){
+            const data = JSON.parse(this.responseText);
+            let jkel = (data.JKEL=="L")?"Laki-Laki":"Perempuan";
+            console.log(data);
+            document.getElementById("txNIM").value = data.NIM;
+            document.getElementById("txNAMA").value = data.NAMA;
+            document.getElementById("txJKEL").value = jkel;
+            document.getElementById("txTGL").value = data.TGL;
+            document.getElementById("txHOBY").value = data.HOBY;
+            document.getElementById("txALAMAT").value = data.ALAMAT;
+
+            document.getElementById("txNIM2").innerHTML = data.NIM;
+            document.getElementById("txNAMA2").innerHTML = data.NAMA;
+            document.getElementById("txJKEL2").innerHTML = jkel;
+            document.getElementById("txTGL2").innerHTML = data.TGL;
+            document.getElementById("txHOBY2").innerHTML = data.HOBY;
+            document.getElementById("txALAMAT2").innerHTML = data.ALAMAT;
+        }
+    </script>
+
+</body>
+</html>
