@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan JQuery 02</title>
+</head>
+
+<body>
+
+    <h3>Judul</h3>
+
+    <div>
+        <button type="button" class="C1">Persegi</button>
+        <button type="button" class="C2">Segi3</button>
+    </div>
+
+    <div id="persegi">
+        <div>
+            Nilai Panjang
+            <input type="number" class="PJ">
+        </div>
+        <div>
+            Nilai Lebar
+            <input type="number" class="LB">
+        </div>
+        <div>
+            <button type="button" class="HitungPersegi">Hitung Luas</button>
+        </div>
+    </div>
+
+    <div id="segi3">
+        <div>
+            Nilai Alas
+            <input type="number" class="AL">
+        </div>
+        <div>
+            Nilai Tinggi
+            <input type="number" class="TG">
+        </div>
+        <div>
+            <button type="button" class="HitungSegi3">Hitung Luas</button>
+        </div>
+    </div>
+
+    <br>
+    <div id="hasil">
+
+    </div>
+
+    <Script src="jquery-3.7.0.min.js"></Script>
+    <script>
+        $(function () {
+            $("#persegi").hide();
+            $("#segi3").hide();
+
+            $(".C1").click(function () {
+                $("h3").html("Hitung Luas Persegi");
+                $("#segi3").hide(1000);
+                $("#persegi").show(1000);
+                $("#hasil").html("");
+
+            });
+
+            $(".C2").click(function () {
+                $("h3").html("Hitung Luas Persegi");
+                $("#persegi").hide(1000);
+                $("#segi3").show(100);
+                $("#hasil").html("");
+
+            });
+
+            $(".HitungPersegi").click(function () {
+                let p = $(".PJ").val();
+                let l = $(".LB").val();
+                let LU = p * l;
+                let tx = "Nilai Luas dari persegi dengan panjang " + p;
+                tx += " dan lebar " + l + " adalah: <br>";
+                tx += "Luas = Panjang x Lebar<br>";
+                tx += "=" + LU + "<br>Jadi Luasny adalah" + LU;
+
+                $("#hasil").html(tx);
+
+            })
+
+            $(".HitungSegi3").click(function () {
+                let a = $(".AL").val();
+                let t = $(".TG").val();
+                let LU = a * t * 1 / 2;
+                let tx = "Nilai Luas dari persegi dengan panjang" + a;
+                tx += "dan lebar " + t + "adalah: <br>";
+                tx += " Luas = 1/2 x Alas X Tinggi<br>";
+                tx += "=" + LU + "<br>Jadi Luasny adalah" + LU;
+
+                $("#hasil").html(tx);
+
+            })
+        });
+    </script>
+
+</body>
+
+</html>
